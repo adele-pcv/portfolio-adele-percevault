@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Lune - Adèle Percevault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo pink-link">adèle percevault</a>
+        <ul class="nav-links">
+            <li><a href="creations.html" class="active-white">mes créas</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-container">
+        
+        <section class="project-top centered">
+            
+            <div class="project-info">
+                <div class="title-wrapper">
+                    <a href="creations.html" class="back-arrow">←</a>
+                    <h1>destination lune</h1>
+                </div>
+                
+                <div class="project-text">
+                    <p>Cette brochure est un projet scolaire, la consigne était de réaliser un dépliant 3 volets, sur InDesign, sur le sujet de notre choix : une exposition, un artiste, un festival... J’ai choisi “Destination Lune”, l’exposition immersive qui a lieu à l’Atelier des Lumières à Paris et d’en faire une brochure informative, touristique, qui pourrait se trouver à l’office du tourisme.</p>
+                    
+                    <p>J'ai choisi de concevoir ce support spécifiquement pour l'impression riso, d'où mon choix de la bichromie (rose fluo et noir) en jouant sur les superpositions. J’ai choisi cette technique d'impression, car elle permet de renforcer l'aspect brut, texturé et imparfait tout comme la surface de la Lune. C’est une méthode d’impression que j’affectionne particulièrement qui nous permet d'avoir un résultat différent à chaque fois avec de légers décalages.</p>
+                </div>
+            </div>
+
+            <div class="project-main-image">
+                <img src="images/mockup-brochure.webp" alt="Dépliant Destination Lune" class="zoomable">
+            </div>
+        </section>
+
+        <section class="project-bottom-images">
+            <div class="img-box">
+                <img src="images/depliant1.jpg" alt="Détail du projet" class="zoomable">
+            </div>
+            <div class="img-box">
+                <img src="images/depliant2.jpg" alt="Détail du projet" class="zoomable">
+            </div>
+        </section>
+
+    </main>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>tous droits réservés</span>
+            <span>adèle percevault</span>
+            <span>© 2025</span>
+        </div>
+    </footer>
+
+    <script>
+        // Script simple pour gérer l'ouverture des images
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        // On sélectionne toutes les images avec la classe "zoomable"
+        document.querySelectorAll('.zoomable').forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = "flex";
+                lightboxImg.src = this.src;
+            });
+        });
+
+        // Fonction pour fermer
+        function closeLightbox() {
+            lightbox.style.display = "none";
+        }
+    </script>
+</body>
+</html>

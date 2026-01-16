@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inktober - Adèle Percevault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo pink-link">adèle percevault</a>
+        <ul class="nav-links">
+            <li><a href="creations.html" class="active-white">mes créas</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-container">
+        
+        <section class="project-top">
+            
+            <div class="project-info">
+                <div class="title-wrapper">
+                    <a href="creations.html" class="back-arrow">←</a>
+                    <h1>carte de vœux</h1>
+                </div>
+                
+                <div class="project-text">
+                    <p>Ce projet a été réalisé dans le cadre de mes cours de graphisme. L'exercice consistait à créer une carte de vœux destinée à être imprimée en risographie. Par groupe de quatre, un thème nous était imposé et nous devions chacun créer une carte de voeux. Le nôtre était "les villes des Pyrénées", et j'ai choisi de mettre à l'honneur la ville de Tarbes, là où je fais mes études.</p>
+                    
+                    <p>Pour illustrer la ville, j'ai chois de représenter le musée du Jardin Massey. C'est un lieu emblématique de la ville et, à mes yeux, le plus agréable et inspirant graphiquement. Pour créer ce design, je me suis aidée d'une photo que j'avais prise là-bas lors d'une promenade.</p>
+
+                    <p>Au-delà de la création visuelle, l'enjeu était la maîtrise technique sur Illustrator en tenant compte des contraintes d'impression comme la gestion des calques par couleur et l'utilisation d'une palette imposée (bleu et rose). J'ai beaucoup aimé réfléchir aux superpositions, aux opacités et textures.</p>
+                </div>
+            </div>
+
+            <div class="project-main-image carousel">
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide current-slide">
+                            <img src="images/carte-voeux.jpg" alt="Carte Adèle" class="zoomable">
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="images/4-cartes-illustrator.jpg" alt="Cartes groupe" class="zoomable">
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="images/4-cartes-rose.webp" alt="Groupe imprimé rose" class="zoomable">
+                        </li>
+                        <li class="carousel-slide">
+                            <img src="images/4-cartes-bleurose.webp" alt="Groupe imprimé final" class="zoomable">
+                        </li>
+                    </ul>
+                </div>
+                
+                <button class="carousel-button carousel-button--left">←</button>
+                <button class="carousel-button carousel-button--right">→</button>
+            </div>
+            </section>
+    </main>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>tous droits réservés</span>
+            <span>adèle percevault</span>
+            <span>© 2025</span>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. SCRIPT DE LA LIGHTBOX (Déjà existant) ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        // On attache l'événement click aux images zoomables
+        // Note: On le fait après le chargement du DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            const zoomableImages = document.querySelectorAll('.zoomable');
+            zoomableImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightbox.style.display = "flex";
+                    lightboxImg.src = this.src;
+                });
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.style.display = "none";
+        }
+
+        // --- 2. SCRIPT DU CARROUSEL (Nouveau) ---
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.carousel-button--right');
+        const prevButton = document.querySelector('.carousel-button--left');
+
+        // On positionne les slides les unes à côté des autres
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        
+        // Arrange les slides côte à côte
+        const setSlidePosition = (slide, index) => {
+            slide.style.left = slideWidth * index + 'px';
+        };
+        slides.forEach(setSlidePosition);
+
+        const moveToSlide = (track, currentSlide, targetSlide) => {
+            track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+            currentSlide.classList.remove('current-slide');
+            targetSlide.classList.add('current-slide');
+        }
+
+        // Clic sur bouton droit
+        nextButton.addEventListener('click', e => {
+            const currentSlide = track.querySelector('.current-slide');
+            const nextSlide = currentSlide.nextElementSibling;
+            
+            // Si on est à la fin, on retourne au début (boucle)
+            if (nextSlide) {
+                moveToSlide(track, currentSlide, nextSlide);
+            } else {
+                moveToSlide(track, currentSlide, slides[0]);
+            }
+        });
+
+        // Clic sur bouton gauche
+        prevButton.addEventListener('click', e => {
+            const currentSlide = track.querySelector('.current-slide');
+            const prevSlide = currentSlide.previousElementSibling;
+
+            // Si on est au début, on va à la fin (boucle)
+            if (prevSlide) {
+                moveToSlide(track, currentSlide, prevSlide);
+            } else {
+                moveToSlide(track, currentSlide, slides[slides.length - 1]);
+            }
+        });
+        
+        // Recalculer la taille si on redimensionne la fenêtre
+        window.addEventListener('resize', () => {
+            const newSlideWidth = slides[0].getBoundingClientRect().width;
+            slides.forEach((slide, index) => {
+                slide.style.left = newSlideWidth * index + 'px';
+            });
+            // Recentrer sur la slide active
+            const currentSlide = track.querySelector('.current-slide');
+            const targetIndex = slides.findIndex(slide => slide === currentSlide);
+            track.style.transform = 'translateX(-' + (newSlideWidth * targetIndex) + 'px)';
+        });
+    </script>
+</body>
+</html>

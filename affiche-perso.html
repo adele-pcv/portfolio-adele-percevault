@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiche perso - Adèle Percevault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo pink-link">adèle percevault</a>
+        <ul class="nav-links">
+            <li><a href="creations.html" class="active-white">mes créas</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-container">
+        
+        <section class="project-top">
+            
+            <div class="project-info">
+                <div class="title-wrapper">
+                    <a href="creations.html" class="back-arrow">←</a>
+                    <h1>affiche perso</h1>
+                </div>
+                
+                <div class="project-text">
+                    <p>Cette affiche est un projet personnel que j’ai réalisé pour illustrer ma formation qui dispose de 3 parcours : communication, graphisme et développement (axé jeux vidéos/AR).</p>
+                    
+                    <p>L'idée était de casser les codes de l'esthétique high-tech habituelle en partant sur quelque chose de plus nostalgique. J'ai détourné nos vieux outils (console rétro, appareil photo vintage, écran cathodique) qui font chacun écho aux différentes spécialisations de parcours, façon photocopie mal imprimée.</p>
+
+                    <p>Au final, c'est surtout une expérimentation Photoshop pour essayer de nouvelles choses sur ce logiciel qui sortent de mes cours de photo habituels et tenter de donner un rendu papier à une image numérique.</p>
+                </div>
+            </div>
+
+            <div class="project-main-image">
+                <img src="images/test affiche mmi.jpg" alt="Affiche MMI" class="zoomable">
+            </div>
+        </section>
+    </main>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>tous droits réservés</span>
+            <span>adèle percevault</span>
+            <span>© 2025</span>
+        </div>
+    </footer>
+
+    <script>
+        // Script simple pour gérer l'ouverture des images
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        // On sélectionne toutes les images avec la classe "zoomable"
+        document.querySelectorAll('.zoomable').forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = "flex";
+                lightboxImg.src = this.src;
+            });
+        });
+
+        // Fonction pour fermer
+        function closeLightbox() {
+            lightbox.style.display = "none";
+        }
+    </script>
+</body>
+</html>

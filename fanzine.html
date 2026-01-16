@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanzine - Adèle Percevault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo pink-link">adèle percevault</a>
+        <ul class="nav-links">
+            <li><a href="creations.html" class="active-white">mes créas</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-container">
+        
+        <section class="project-top">
+            
+            <div class="project-info">
+                <div class="title-wrapper">
+                    <a href="creations.html" class="back-arrow">←</a>
+                    <h1>fanzine</h1>
+                </div>
+                
+                <div class="project-text">
+                    <p>Ce fanzine est un projet éditorial qui a été réalisé dans le cadre de mes cours avec une contrainte technique précise : un pliage en 8 volets et une impression exclusivement en noir et blanc.</p>
+                    
+                    <p>J'ai choisi de le faire sur le groupe Linkin Park, un groupe que j’apprécie beaucoup, avec une approche scrapbooking un peu grunge en mixant collage numérique et l'écriture manuscrite réalisée sur Procreate pour le côté très personnel du fanzine, comme si nous étions dans le journal intime d’une fan du groupe.</p>
+
+                    <p>Je souhaitais un résultat assez immersif, qui raconte l'histoire du groupe et en essayant de transmettre son émotion et son énergie.</p>
+                </div>
+            </div>
+
+            <div class="project-main-image">
+                <img src="images/fanzine1.jpg" alt="Fanzine 1" class="zoomable">
+            </div>
+        </section>
+
+        <section class="project-bottom-images grid-3">
+            <div class="img-box">
+                <img src="images/fanzine2.jpg" alt="Fanzine 2" class="zoomable">
+            </div>
+            <div class="img-box">
+                <img src="images/fanzine3.jpg" alt="Fanzine 3" class="zoomable">
+            </div>
+            <div class="img-box">
+                <img src="images/fanzine4.jpg" alt="Fanzine 4" class="zoomable">
+            </div>
+        </section>
+
+    </main>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>tous droits réservés</span>
+            <span>adèle percevault</span>
+            <span>© 2025</span>
+        </div>
+    </footer>
+
+    <script>
+        // Script simple pour gérer l'ouverture des images
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        // On sélectionne toutes les images avec la classe "zoomable"
+        document.querySelectorAll('.zoomable').forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = "flex";
+                lightboxImg.src = this.src;
+            });
+        });
+
+        // Fonction pour fermer
+        function closeLightbox() {
+            lightbox.style.display = "none";
+        }
+    </script>
+</body>
+</html>

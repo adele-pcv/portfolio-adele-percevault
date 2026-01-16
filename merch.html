@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch de promo - Adèle Percevault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo pink-link">adèle percevault</a>
+        <ul class="nav-links">
+            <li><a href="creations.html" class="active-white">mes créas</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-container">
+        
+        <section class="project-top">
+            
+            <div class="project-info">
+                <div class="title-wrapper">
+                    <a href="creations.html" class="back-arrow">←</a>
+                    <h1>merch de promo</h1>
+                </div>
+                
+                <div class="project-text">
+                    <p>Chaque année, un concours est organisé pour trouver le nouveau design qui sera sur le merch de la promo. Cette année, j'ai voulu casser le côté "logo d'école" et créer un visuel qu'on porte par envie.</p>
+                    
+                    <p>Je suis partie sur une esthétique un peu y2k ou encore cyber sigilism, qui font écho aux codes du streetwear actuel. J'ai alors conçu le design sur Illustrator, j'ai fait le choix qu'il soit monochrome pour plus d'impact visuel et faciliter la sérigraphie sur les différents textiles/items.</p>
+
+                    <p>Le projet a finalement été retenu par les étudiants pour l'impression. C’est une belle récompense de voir aujourd'hui ce graphisme quitter mon écran pour être porté dans les couloirs de l'IUT.</p>
+                </div>
+            </div>
+
+            <div class="project-main-image">
+                <img src="images/logos-mmi.png" alt="Logos MMI" class="zoomable">
+            </div>
+        </section>
+
+        <section class="project-bottom-images grid-4">
+            <div class="img-box">
+                <img src="images/sweat-avant-noir.png" alt="Sweat Avant Noir" class="zoomable">
+            </div>
+            <div class="img-box">
+                <img src="images/sweat-avant-blanc.png" alt="Sweat Avant Blanc" class="zoomable">
+            </div>
+            <div class="img-box">
+                <img src="images/sweat-arriere-noir.png" alt="Sweat Arrière Noir" class="zoomable">
+            </div>
+            <div class="img-box">
+                <img src="images/sweat-arriere-blanc.png" alt="Sweat Arrière Blanc" class="zoomable">
+            </div>
+        </section>
+
+    </main>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>tous droits réservés</span>
+            <span>adèle percevault</span>
+            <span>© 2025</span>
+        </div>
+    </footer>
+
+    <script>
+        // Script simple pour gérer l'ouverture des images
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        // On sélectionne toutes les images avec la classe "zoomable"
+        document.querySelectorAll('.zoomable').forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = "flex";
+                lightboxImg.src = this.src;
+            });
+        });
+
+        // Fonction pour fermer
+        function closeLightbox() {
+            lightbox.style.display = "none";
+        }
+    </script>
+</body>
+</html>

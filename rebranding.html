@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebranding - Adèle Percevault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo pink-link">adèle percevault</a>
+        <ul class="nav-links">
+            <li><a href="creations.html" class="active-white">mes créas</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="project-container">
+        
+        <section class="project-top centered">
+            
+            <div class="project-info">
+                <div class="title-wrapper">
+                    <a href="creations.html" class="back-arrow">←</a>
+                    <h1>rebranding</h1>
+                </div>
+                
+                <div class="project-text">
+                    <p>Ce projet de rebranding est né d'une envie personnelle, celle de donner un coup de frais à l'identité visuelle de ma formation. J'ai voulu m'éloigner de l'existant pour proposer une vision beaucoup plus minimaliste et actuelle.</p>
+                    
+                    <p>C'était un défi très intéressant car je vis cette formation de l'intérieur, j'ai donc une vision très claire de sa polyvalence et ses rouages, et c'est exactement ce que j'ai voulu traduire ici. Dans un premier temps j'ai imaginé un socle commun noir (ou blanc), qui symbolise les bases théoriques communes à tous. Une structure qui relie tous les parcours grâce aux lettres qui se lient.</p>
+
+                    <p>Ensuite, les points de couleur viennent ponctuer cette structure pour apporter du dynamisme. J'ai choisi les trois couleurs primaires (bleu, rouge, jaune) pour illustrer clairement les trois options de spécialisation qui s'offrent à nous en deuxième année, car ce qui fait la force de ce BUT c'est la diversité de profils.</p>
+                </div>
+            </div>
+
+            <div class="project-main-image">
+                <img src="images/essai da2.png" alt="Affiche MMI" class="zoomable">
+            </div>
+        </section>
+    </main>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>tous droits réservés</span>
+            <span>adèle percevault</span>
+            <span>© 2025</span>
+        </div>
+    </footer>
+
+    <script>
+        // Script simple pour gérer l'ouverture des images
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        // On sélectionne toutes les images avec la classe "zoomable"
+        document.querySelectorAll('.zoomable').forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = "flex";
+                lightboxImg.src = this.src;
+            });
+        });
+
+        // Fonction pour fermer
+        function closeLightbox() {
+            lightbox.style.display = "none";
+        }
+    </script>
+</body>
+</html>
